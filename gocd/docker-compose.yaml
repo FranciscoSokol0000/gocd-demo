@@ -1,0 +1,29 @@
+version: '3'
+services:
+  gocd_server:
+    image: "gocd/gocd-server:v18.9.0"
+    volumes:
+      - ./godata:/godata
+      - ./ssh:/home/go/.ssh
+    expose:
+      - 8154
+    ports:
+      - "8154:8154"
+      - "8153:8153"
+    healthcheck:
+      test: ["CMD", "curl", "http://localhost:8153"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+  gocd_agent:
+#    image: "gocd/gocd-agent-alpine-3.5:v18.9.0"
+    build: "./gocd-agent"
+    depends_on:
+      - gocd_server
+    links:
+      - gocd_server
+    environment:
+      - GO_SERVER_URL="https://gocd_server:8154/go"
+      - AGENT_AUTO_REGISTER_KEY="agent-key"
+    volumes:
+      - ./ssh:/home/go/.ssh
