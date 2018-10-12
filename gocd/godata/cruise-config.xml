@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cruise xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="cruise-config.xsd"
+        schemaVersion="113">
+    <server artifactsdir="artifacts" agentAutoRegisterKey="9f2dc24a-4ea7-4bb9-9e7a-af17dbe2d010"
+            webhookSecret="8a816a1b-a1e1-437b-87b2-6bd72642b70c" commandRepositoryLocation="default"
+            serverId="d4778adf-43f4-47a3-92cb-cf74c0e4b2e4" tokenGenerationKey="d2c7d288-13c5-4e82-b8b4-c50ef48a68dc">
+        <backup emailOnSuccess="true" emailOnFailure="true"/>
+    </server>
+    <pipelines group="defaultGroup">
+        <pipeline name="cicd-demo">
+            <materials>
+                <git url="git@github.com:FranciscoSokol0000/cicd-demo.git"/>
+            </materials>
+            <stage name="defaultStage">
+                <jobs>
+                    <job name="defaultJob">
+                        <tasks>
+                            <exec command="./gradlew build"/>
+                        </tasks>
+                    </job>
+                </jobs>
+            </stage>
+        </pipeline>
+    </pipelines>
+</cruise>
