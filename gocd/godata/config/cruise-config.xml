@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cruise xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="cruise-config.xsd" schemaVersion="113">
+  <server artifactsdir="artifacts" agentAutoRegisterKey="cba9a4a0-730c-4525-83d4-1a3f403a513f" webhookSecret="273371ba-0937-4196-8379-306cad8d7920" commandRepositoryLocation="default" serverId="c5ae9f3d-5f16-49a7-b593-ab95a2c7ae4a" tokenGenerationKey="385972eb-9b64-4833-89a6-e36ff8253ffb">
+    <backup emailOnSuccess="true" emailOnFailure="true" />
+  </server>
+  <config-repos>
+    <config-repo pluginId="yaml.config.plugin" id="cicd-demo-config">
+      <git url="git@github.com:franciscosokol0000/cicd-demo.git" />
+    </config-repo>
+  </config-repos>
+  <pipelines group="gocd" />
+</cruise>

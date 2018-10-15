@@ -7,4 +7,5 @@ RUN apk add --update \
 
 COPY docker-entrypoint-wrapper.sh /docker-entrypoint-wrapper.sh
 
+
 ENTRYPOINT ["/docker-entrypoint-wrapper.sh"]

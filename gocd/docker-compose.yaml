@@ -27,3 +27,4 @@ services:
     volumes:
       - ./ssh:/home/go/.ssh
       - /var/run/docker.sock:/var/run/docker.sock
+#      - /Users/csokol/workspace/otto/cicd-demo/.minikube:/home/go/.minikube
