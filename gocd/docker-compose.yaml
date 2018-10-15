@@ -16,7 +16,6 @@ services:
       timeout: 10s
       retries: 5
   gocd_agent:
-#    image: "gocd/gocd-agent-alpine-3.5:v18.9.0"
     build: "./gocd-agent"
     depends_on:
       - gocd_server
@@ -27,3 +26,4 @@ services:
       - AGENT_AUTO_REGISTER_KEY="agent-key"
     volumes:
       - ./ssh:/home/go/.ssh
+      - /var/run/docker.sock:/var/run/docker.sock
